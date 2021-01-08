@@ -8,7 +8,7 @@
 <p>Find me in app/views/contents/index.html.erb</p>
 
 <% if can? :create, current_user %>
-  <li><%= link_to 'New content!', "#", class: "new-content" %></li>
+  <div><%= link_to 'New content!', "#", class: "new-content" %></div>
 <% end %>
 
 <% if can? :update, current_user %>
