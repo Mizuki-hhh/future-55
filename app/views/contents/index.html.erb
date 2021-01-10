@@ -1,2 +1,21 @@
 <h1>Contents#index</h1>
+<%= render "shared/header" %>
+
+<% if user_signed_in? %>
+  <div>
+  </div>
+<% end %>
 <p>Find me in app/views/contents/index.html.erb</p>
+
+<% if can? :create, current_user %>
+  <div><%= link_to 'New content!', "#", class: "new-content" %></div>
+<% end %>
+
+<% if can? :update, current_user %>
+  <h1>You can update becouse you're a contributor</h1>
+<% end %>
+
+<% if can? :read, current_user %>
+  <h1>You can read this as a student or a contributor</h1>
+<% end %>
+

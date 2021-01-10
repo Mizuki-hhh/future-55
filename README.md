@@ -4,12 +4,13 @@
 
 | Column             | Type    | Options                   |
 | ------------------ |-------- | ------------------------- |
-| role               | integer | null: false, index: true  |
+| role               | integer | null: false               |
 | name               | string  | null: false               |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
 | birthday           | date    | null: false               |
-| occupation         | text    | null: false               |
+| occupation         | string  | null: false               |
+| profile            | text    |                           |
 
 ### Association
 
@@ -25,7 +26,6 @@
 | title       | string     | null: false                    |
 | overview    | text       | null: false                    |
 | writing     | text       | null: false                    |
-| contributor | string     | null: false                    |
 | source      | string     | null: false                    |
 | user        | references | null: false, foreign_key: true |
 | category    | references | null: false, foreign_key: true |
