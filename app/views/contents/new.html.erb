@@ -1,0 +1,44 @@
+<h1>Tops#new</h1>
+<p>Find me in app/views/tops/new.html.erb</p>
+
+#ここから
+<%= form_with model: @content, local: true do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+  <div class="field">
+    <%= f.label :title, "タイトル" %><br />
+    <%= f.text_field :title, size: '35x5' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image, "画像" %><br />
+    <%= f.file_field :image_content, :accept => 'image/jpeg,image/gif,image/png' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :video, "動画" %><br />
+    <%= f.file_field :video_content, :accept => 'video/*' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :overview %><br />
+    <%= f.text_area :overview, size: '80x10' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :writing %><br />
+    <%= f.text_area :writing, size: '100x20' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :source %><br />
+    <%= f.text_field :source, size: '50x5' %>
+  </div>
+
+
+  <div class="#">
+    <%= f.submit "投稿する" ,class:"#" %>
+    <%=link_to 'もどる', root_path, class:"back-btn" %>
+  </div>
+<% end %>

@@ -3,19 +3,28 @@
 
 <% if user_signed_in? %>
   <div>
+    <%= link_to current_user.name, "#", class: :mypage__link %>
   </div>
 <% end %>
 <p>Find me in app/views/contents/index.html.erb</p>
 
-<% if can? :create, current_user %>
-  <div><%= link_to 'New content!', "#", class: "new-content" %></div>
+<% @contents.each do |content| %>
+  <%= content.title %><br />
+  <% if content.video_content.present? %>
+    <%= video_tag(content.video_content.url, :controls => true, width: "30%")  %>
+  <% end %>
+  <% if content.image_content.present? %>
+    <%= image_tag content.image_content.url, width: "30%" %>
+  <% end %><br />
+  <%=safe_join(content.overview.split("\n"),tag(:br))%><br />
+  <%=safe_join(content.writing.split("\n"),tag(:br))%><br />
+  <%= content.user.name %><br />
+  <%= raw Rinku.auto_link(h(content.source), :urls, 'target="_blank" rel="noopener noreferrer"') %><br />
 <% end %>
 
 <% if can? :update, current_user %>
   <h1>You can update becouse you're a contributor</h1>
 <% end %>
-
 <% if can? :read, current_user %>
   <h1>You can read this as a student or a contributor</h1>
 <% end %>
-
