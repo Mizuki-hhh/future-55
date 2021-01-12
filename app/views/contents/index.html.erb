@@ -11,25 +11,25 @@
 <div class='contents'>
   <h2 class='title'>コンテンツ一覧</h2>
 
-  <ul class='content-lists'>
+  <ul class='content__lists'>
 
     <% @contents.each do |content| %>
       <li class='list'>
         <%= link_to content_path(content.id) do %>
-        <div class='content-img'>
+        <div class='content__img'>
           <% if content.video_content.present? %>
             <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
           <% else %>
-            <div class="image-content" >
+            <div class="image__content" >
             <%= image_tag content.image_content.url, width: '370px' %>
             </div>
           <% end %>
         </div>
-        <div class='content-info'>
-          <h3 class='content-title'>
+        <div class='content__info'>
+          <h3 class='content__title'>
             <%= content.title %>
           </h3>
-          <p class='content-overview'>
+          <p class='content__overview'>
             <%=safe_join(content.overview.split("\n"),tag(:br))%>
           </p>
         </div>

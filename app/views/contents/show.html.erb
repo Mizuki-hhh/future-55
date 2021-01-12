@@ -1,0 +1,76 @@
+<main class="main">
+  <div class="inner">
+    <div class="content__wrapper">
+      <p class= "content__hedding">
+        <%= @content.title %>
+      </p>
+      <%= link_to @content.user.name, "#", class: :content__user %>
+
+      <%if user_signed_in? && current_user.id == @content.user_id %>
+        <div class="content__manage">
+          <%= link_to "編集", "", method: :get, class: :content__btn %>
+          <%= link_to "削除", "", method: :delete, class: :content__btn %>
+        </div>
+      <% end %>
+      <div class="content__imagevideo">
+        <% if @content.video_content.present? %>
+          <div class="video__content">
+          <%= video_tag(@content.video_content.url, :controls => true, width: "370px")  %>
+          </div>
+        <% end %>
+        <% if @content.image_content.present? %>
+          <div class="image__content" >
+          <%= image_tag @content.image_content.url, width: '370px' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="content__body">
+        <div class="content__detail">
+          <p class="detail__title">概要</p>
+          <p class="detail__message">
+            <%= safe_join(@content.overview.split("\n"),tag(:br)) %>
+          </p>
+        </div>
+        <div class="content__detail">
+          <p class="detail__title">詳細</p>
+          <p class="detail__message">
+            <%= safe_join(@content.writing.split("\n"),tag(:br)) %>
+          </p>
+        </div>
+        <div class="content__detail">
+          <p class="detail__title">URL</p>
+          <p class="detail__message">
+            <%= raw Rinku.auto_link(h(@content.source), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+          </p>
+        </div>
+      </div>
+      <div class="content__comments">
+        <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+        <% if user_signed_in? %>
+          <%= form_with(model: [@content], local: true) do |f|%>
+            <div class="field">
+              <%= f.label :text, "コメント" %><br />
+              <%= f.text_field :text %>
+            </div>
+            <div class="actions">
+              <%= f.submit "送信する", class: :form__btn  %>
+            </div>
+          <% end %>
+        <% end %>
+        <%# // ログインしているユーザーには上記を表示する %>
+        <%# <ul class="comments_lists"> %>
+          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+          <%# <% if @comments %>
+            <%# <% @comments.each do |comment| %>
+              <%# <li class="comments_list"> %>
+                 <%# <%= comment.text %>
+                <%# <%= link_to comment.user.name, user_path(comment.user.id), class: :comment_user %>
+              <%# </li> %>
+            <%# <% end %>
+          <%# <% end %>
+          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+        <%# </ul> %>
+      </div>
+    </div>
+  </div>
+</main>
