@@ -8,20 +8,39 @@
 <% end %>
 <p>Find me in app/views/contents/index.html.erb</p>
 
-<% @contents.each do |content| %>
-  <%= content.title %><br />
-  <% if content.video_content.present? %>
-    <%= video_tag(content.video_content.url, :controls => true, width: "30%")  %>
-  <% end %>
-  <% if content.image_content.present? %>
-    <%= image_tag content.image_content.url, width: "30%" %>
-  <% end %><br />
-  <%=safe_join(content.overview.split("\n"),tag(:br))%><br />
-  <%=safe_join(content.writing.split("\n"),tag(:br))%><br />
-  <%= content.user.name %><br />
-  <%= raw Rinku.auto_link(h(content.source), :urls, 'target="_blank" rel="noopener noreferrer"') %><br />
-<% end %>
+<div class='contents'>
+  <h2 class='title'>コンテンツ一覧</h2>
 
+  <ul class='content-lists'>
+
+    <% @contents.each do |content| %>
+      <li class='list'>
+        <%= link_to content_path(content.id) do %>
+        <div class='content-img'>
+          <% if content.video_content.present? %>
+            <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
+          <% else %>
+            <div class="image-content" >
+            <%= image_tag content.image_content.url, width: '370px' %>
+            </div>
+          <% end %>
+        </div>
+        <div class='content-info'>
+          <h3 class='content-title'>
+            <%= content.title %>
+          </h3>
+          <p class='content-overview'>
+            <%=safe_join(content.overview.split("\n"),tag(:br))%>
+          </p>
+        </div>
+        <% end %>
+         <%= content.user.name %><br />
+         <%= content.user.occupation %><br />
+        
+      </li>
+    <% end %>
+  </ul>
+</div>
 <% if can? :update, current_user %>
   <h1>You can update becouse you're a contributor</h1>
 <% end %>

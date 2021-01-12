@@ -1,3 +1,44 @@
 // Place all the styles related to the contents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// コンテンツ一覧
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 10vh;
+}
+
+
+
+.content-lists {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.content-lists>.list {
+  width: 37vh;
+  padding: 1vw;
+  margin-bottom: 10vh;
+}
+
+.content-info {
+  padding: 1vw;
+}
+
+.content-title {
+  text-decoration: none;
+}
+
+.content-overview {
+  text-decoration: none;
+}
+
+a {
+  color: black;
+}
+

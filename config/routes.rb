@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get 'contents/index'
   root to: "contents#index"
 
-  resources :contents, only: [:index, :new, :create]
+  resources :contents, only: [:index, :new, :create, :show]
 
 end
