@@ -1,10 +1,16 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  # load_and_authorize_resource
+
   def index
     @contents = Content.includes(:user)
   end
 
   def new
     @content = Content.new
+    if current_user.student?
+      redirect_to root_path
+    end
   end
 
   def create

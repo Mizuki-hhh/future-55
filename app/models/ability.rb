@@ -12,7 +12,8 @@ class Ability
     end
 
     if user.student?
-      can :read, :all
+      can :read, Content
+      cannot :create, Content
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.
