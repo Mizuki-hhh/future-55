@@ -21,14 +21,16 @@
 
 ## contents テーブル
 
-| Column      | Type       | Options                        |
-| ----------- |----------- | ------------------------------ |
-| title       | string     | null: false                    |
-| overview    | text       | null: false                    |
-| writing     | text       | null: false                    |
-| source      | string     | null: false                    |
-| user        | references | null: false, foreign_key: true |
-| category    | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- |----------- | ------------------------------ |
+| title         | string     | null: false                    |
+| image_content | string     |                                |
+| video_content | string     |                                |
+| overview      | text       | null: false                    |
+| writing       | text       | null: false                    |
+| source        | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| category      | references | null: false, foreign_key: true |
 
 ### Association
 
