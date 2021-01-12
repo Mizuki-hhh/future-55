@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: [:show, :edit, :update]
+  before_action :set_content, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   # load_and_authorize_resource
 
@@ -37,6 +37,16 @@ class ContentsController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.id == @content.user_id
+      if @content.destroy
+        redirect_to root_path
+      else
+        render :show
+      end
+    end
+  end
+  
   private
 
   def content_params
