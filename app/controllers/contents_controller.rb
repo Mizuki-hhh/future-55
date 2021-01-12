@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :set_content, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   # load_and_authorize_resource
 
@@ -8,9 +9,6 @@ class ContentsController < ApplicationController
 
   def new
     @content = Content.new
-    if current_user.student?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -23,12 +21,29 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = Content.find(params[:id])
+  end
+
+  def edit
+    unless @content.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    if @content.update(content_params)
+      redirect_to content_path(@content.id)
+    else
+      render :edit
+    end
   end
 
   private
 
   def content_params
     params.require(:content).permit(:title, :image_content, :video_content, :overview, :writing, :source).merge(user_id: current_user.id)
+  end
+
+  def set_content
+    @content = Content.find(params[:id])
   end
 end
