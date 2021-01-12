@@ -9,7 +9,7 @@
       <%if user_signed_in? && current_user.id == @content.user_id %>
         <div class="content__manage">
           <%= link_to "編集", edit_content_path(@content.id), method: :get, class: :content__btn %>
-          <%= link_to "削除", "", method: :delete, class: :content__btn %>
+          <%= link_to "削除", content_path(@content.id), method: :delete, class: :content__btn %>
         </div>
       <% end %>
       <div class="content__imagevideo">
