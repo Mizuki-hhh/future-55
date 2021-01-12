@@ -9,32 +9,33 @@
   flex-direction: column;
   align-items: center;
   padding: 10vh 10vh;
+  overflow-anchor: none;
 }
 
 
 
-.content-lists {
+.content__lists {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.content-lists>.list {
+.content__lists>.list {
   width: 37vh;
   padding: 1vw;
   margin-bottom: 10vh;
 }
 
-.content-info {
+.content__info {
   padding: 1vw;
 }
 
-.content-title {
+.content__title {
   text-decoration: none;
 }
 
-.content-overview {
+.content__overview {
   text-decoration: none;
 }
 
@@ -42,3 +43,77 @@ a {
   color: black;
 }
 
+
+// コンテンツ詳細
+.content__wrapper{
+  min-height: calc(100vh - 161px);
+}
+.content__hedding{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+.content__user{
+  display: block;
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+  text-decoration: underline;
+}
+.content__imagevideo{
+  width: 40%;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+.content__detail{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+.detail__title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.content__manage{
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+.content__btn{
+  display: block;
+  padding: 0.4em 1.6em;
+  font-size: 0.4em;
+  color: #999;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #999 solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin: 0 4px;
+}
+.content__btn:hover{
+  color: #fff;
+  background: #999;
+}
+
+.content__comments{
+  background-color: #f6f6f6;
+  padding: 20px;
+  margin: 28px 0 40px 0;
+}
+
+.comments_lists{
+  padding-left: 20px;
+}
+
+.comments_list{
+  list-style-type: square;
+  padding-bottom: 5px;
+}
+
+.comment_user{
+  font-size: 16px;
+  color: #999;
+  text-decoration: underline;
+}
