@@ -52,7 +52,7 @@
       <div class="content__comments">
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
         <% if user_signed_in? %>
-          <%= form_with(model: [@content], local: true) do |f|%>
+          <%= form_with(model: [@content, @comment], local: true) do |f|%>
             <div class="field">
               <%= f.label :text, "コメント" %><br />
               <%= f.text_field :text %>
@@ -63,18 +63,25 @@
           <% end %>
         <% end %>
         <%# // ログインしているユーザーには上記を表示する %>
-        <%# <ul class="comments_lists"> %>
+        <div id='comments'>
+        <ul class="comments__lists">
           <%# 投稿に紐づくコメントを一覧する処理を記述する %>
-          <%# <% if @comments %>
-            <%# <% @comments.each do |comment| %>
-              <%# <li class="comments_list"> %>
-                 <%# <%= comment.text %>
-                <%# <%= link_to comment.user.name, user_path(comment.user.id), class: :comment_user %>
-              <%# </li> %>
-            <%# <% end %>
-          <%# <% end %>
+          <% if @comments %>
+            <% @comments.each do |comment| %>
+              <li class="comments__list">
+                <div class="comment__top">
+                  <%= comment.text %>
+                </div>
+                <div class="comment__bottom">
+                  <div><%= link_to comment.user.name, "#", class: :comment_user %></div>
+                  <div><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
           <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
-        <%# </ul> %>
+        </ul>
+        </div>
       </div>
     </div>
   </div>
