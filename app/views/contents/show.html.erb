@@ -1,9 +1,14 @@
+<%= link_to "トップページ", root_path %>
+
 <main class="main">
   <div class="inner">
     <div class="content__wrapper">
       <p class= "content__hedding">
         <%= @content.title %>
       </p>
+      <div class="content__date">
+        <%= l @content.created_at %>
+      </div>
       <%= link_to @content.user.name, "#", class: :content__user %>
 
       <%if user_signed_in? && current_user.id == @content.user_id %>
