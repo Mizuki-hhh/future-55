@@ -3,6 +3,7 @@ class Content < ApplicationRecord
   mount_uploader :video_content, ImageVideoUploader
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   with_options presence: true do
     validates :title
