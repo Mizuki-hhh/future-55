@@ -12,8 +12,6 @@
   overflow-anchor: none;
 }
 
-
-
 .content__lists {
   width: 100vw;
   display: flex;
@@ -22,7 +20,7 @@
 }
 
 .content__lists>.list {
-  width: 37vh;
+  width: 50vh;
   padding: 1vw;
   margin-bottom: 10vh;
 }
@@ -44,15 +42,28 @@ a {
 }
 
 
+
+
+
+
 // コンテンツ詳細
 .content__wrapper{
   min-height: calc(100vh - 161px);
 }
+
+.image__content {
+  text-align: center;
+}
+
 .content__hedding{
   font-size: 24px;
   font-weight: bold;
   text-align: center;
 }
+.content__date {
+  text-align: center;
+}
+
 .content__user{
   display: block;
   font-size: 16px;
@@ -103,13 +114,14 @@ a {
   margin: 28px 0 40px 0;
 }
 
-.comments_lists{
+.comments__lists{
   padding-left: 20px;
 }
 
-.comments_list{
+.comments__list{
   list-style-type: square;
   padding-bottom: 5px;
+  list-style: none;
 }
 
 .comment_user{

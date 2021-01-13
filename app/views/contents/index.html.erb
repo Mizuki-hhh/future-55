@@ -18,10 +18,10 @@
         <%= link_to content_path(content.id) do %>
         <div class='content__img'>
           <% if content.video_content.present? %>
-            <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
+            <%= video_tag(content.video_content.url, :controls => true, width: "320px")  %>
           <% else %>
             <div class="image__content" >
-            <%= image_tag content.image_content.url, width: '370px' %>
+            <%= image_tag content.image_content.url, width: '320px' %>
             </div>
           <% end %>
         </div>
@@ -32,11 +32,14 @@
           <p class='content__overview'>
             <%=safe_join(content.overview.split("\n"),tag(:br))%>
           </p>
+          <p class='content__user_name'>
+            <%= content.user.name %><br />
+          </p>
+          <p class='content__user_occupation'>
+            <%= content.user.occupation %><br />
+          </p>
         </div>
         <% end %>
-         <%= content.user.name %><br />
-         <%= content.user.occupation %><br />
-        
       </li>
     <% end %>
   </ul>

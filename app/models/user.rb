@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :contents
+  has_many :comments #, dependent: :destroy
 
   with_options presence: true do
     validates :name
@@ -20,6 +21,5 @@ class User < ApplicationRecord
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, :password_confirmation,  with: PASSWORD_REGEX 
-
 
 end
