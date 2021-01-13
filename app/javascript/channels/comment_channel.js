@@ -36,6 +36,7 @@ consumer.subscriptions.create("CommentChannel", {
       bottomElement.appendChild(timeElement);
 
       const text = `<p>${data.content.text}</p>`;
+      const br = text.replace(/\n|\r\n|\r/g, '<br>');
       topElement.innerHTML = text;
       const name = `${data.name}`;
       nameElement.innerHTML = name;

@@ -55,7 +55,7 @@
           <%= form_with(model: [@content, @comment], local: true) do |f|%>
             <div class="field">
               <%= f.label :text, "コメント" %><br />
-              <%= f.text_field :text %>
+              <%= f.text_area :text ,size: '50x3' %>
             </div>
             <div class="actions">
               <%= f.submit "送信する", class: :form__btn  %>
@@ -70,7 +70,7 @@
             <% @comments.each do |comment| %>
               <li class="comments__list">
                 <div class="comment__top">
-                  <%= comment.text %>
+                  <%= safe_join(comment.text.split("\n"),tag(:br)) %>
                 </div>
                 <div class="comment__bottom">
                   <div><%= link_to comment.user.name, "#", class: :comment_user %></div>
