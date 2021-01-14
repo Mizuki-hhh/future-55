@@ -3,7 +3,7 @@
 
 <% if user_signed_in? %>
   <div>
-    <%= link_to current_user.name, "#", class: :mypage__link %>
+    <%= link_to current_user.name, user_path(current_user.id), class: :mypage__link %>
   </div>
 <% end %>
 <p>Find me in app/views/contents/index.html.erb</p>
@@ -33,10 +33,10 @@
             <%=safe_join(content.overview.split("\n"),tag(:br))%>
           </p>
           <p class='content__user_name'>
-            <%= content.user.name %><br />
+            <%= link_to content.user.name, user_path(content.user.id) %><br />
           </p>
           <p class='content__user_occupation'>
-            <%= content.user.occupation %><br />
+            <%= link_to content.user.occupation, user_path(content.user.id) %><br />
           </p>
         </div>
         <% end %>
