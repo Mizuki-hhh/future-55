@@ -9,7 +9,7 @@
       <div class="content__date">
         <%= l @content.created_at %>
       </div>
-      <%= link_to @content.user.name, "#", class: :content__user %>
+      <%= link_to @content.user.name, user_path(@content.user), class: :content__user %>
 
       <%if user_signed_in? && current_user.id == @content.user_id %>
         <div class="content__manage">
@@ -73,7 +73,7 @@
                   <%= safe_join(comment.text.split("\n"),tag(:br)) %>
                 </div>
                 <div class="comment__bottom">
-                  <div><%= link_to comment.user.name, "#", class: :comment_user %></div>
+                  <div><%= link_to comment.user.name, user_path(comment.user), class: :comment_user %></div>
                   <div><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
                 </div>
               </li>
