@@ -27,6 +27,9 @@ class ContentsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @content.comments.includes(:user).order("created_at DESC")
+    @category_id = @content.category_id
+    @category_parent = Category.find(@category_id).parent
+    @category_child = Category.find(@category_id)
   end
 
   def edit
