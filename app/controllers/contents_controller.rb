@@ -47,7 +47,7 @@ class ContentsController < ApplicationController
     if @content.update(content_params)
       redirect_to content_path(@content.id)
     else
-      render :edit
+      redirect_to controller: :contents, action: :edit
     end
   end
 
