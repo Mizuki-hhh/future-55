@@ -15,5 +15,31 @@
     <li><%= link_to 'New content', new_content_path, class: "user-name" %></li>
     <% end %>
   </div>
+
+  <div>
+      <ul class="categories">
+        <li>
+          <p>カテゴリー一覧</p>
+          <%= link_to "#", class: 'category__search' do %>
+            <ul class='category__parent category__list'>
+              <% @parents.each do |parent| %>
+                <li class='category__parent--name'>
+                  <%= link_to parent.name, "#" %>
+                    <ul class='caategory__child category__list'>
+                      <% parent.children.each do |child| %>
+                        <li class='category__child--name'>
+                          <%= link_to child.name, category_path(child.id) %>
+                          <%# @contents.ids %>
+                        </li>
+                      <% end %>
+                    </ul>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
 </div>
 </header>

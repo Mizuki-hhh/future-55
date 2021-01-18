@@ -1,0 +1,58 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// カテゴリー一覧
+
+.categories {
+  display: flex;
+  height: 10px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.category__search {
+  width: 25%;
+}
+
+.categories li {
+  list-style: none;
+  position: relative;
+}
+
+.category__search {
+  // border-right: 1px solid plum;
+  color: white;
+  display: block;
+  height: 1px;
+  line-height: 2px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.categories li li{
+  height: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+// .category__parent--name {
+//   // border-top: 1px solid #ffffff;
+// }
+
+.categories li:hover > ul > li {
+  height: 2rem;
+  overflow: visible;
+}
+
+.category__child--name{
+  display: block;
+}
+
+.categories li ul li ul {
+  left: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

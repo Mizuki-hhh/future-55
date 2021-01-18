@@ -2,11 +2,10 @@
 <%= render "shared/header" %>
 
 <% if user_signed_in? %>
-  <div>
+  <div class='user__name'>
     <%= link_to current_user.name, user_path(current_user.id), class: :mypage__link %>
   </div>
 <% end %>
-<p>Find me in app/views/contents/index.html.erb</p>
 
 <div class='contents'>
   <h2 class='title'>コンテンツ一覧</h2>
