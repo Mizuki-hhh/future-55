@@ -30,6 +30,11 @@ class ContentsController < ApplicationController
   end
 
   def edit
+    child_category = @content.category
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
     unless @content.user_id == current_user.id
       redirect_to root_path
     end
