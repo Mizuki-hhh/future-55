@@ -53,6 +53,10 @@ class ContentsController < ApplicationController
     end
   end
   
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_id]}", ancestry: nil).children
+  end
+
   private
 
   def content_params
