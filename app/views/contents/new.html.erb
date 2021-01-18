@@ -36,6 +36,21 @@
     <%= f.text_field :source, size: '50x5' %>
   </div>
 
+  <div class="field">
+      <div class='listing-form-box'> 
+          <div class='listing-content-detail__category'>
+            <%= f.label :category, class: 'listing-default__label' %><br />
+              <div class='listing-select-wrapper'>
+                <div class="listing-select-wrapper__box">
+                  <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} %>
+                </div>
+                <div class="listing-select-wrapper__box">
+                  <div class='listing-select-wrapper__box--select', id='child_category'></div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
   <div class="#">
     <%= f.submit "投稿する" ,class:"#" %>
