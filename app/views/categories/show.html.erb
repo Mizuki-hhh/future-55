@@ -1,0 +1,45 @@
+<%= link_to "トップページ", root_path %>
+
+<h1>Show page</h1>
+
+<div class="contents-container">
+  <div class="contents-index">
+    <div class="title">
+      <%= @category.name %>
+      <div class="title__border"></div>
+    </div>
+    <% unless @contents.blank? %>
+      <ul class="lists">
+        <% @contents.each do |content| %>
+          <li class='list'>
+            <%= link_to content_path(content.id) do %>
+            <div class='content__img'>
+              <% if content.video_content.present? %>
+                <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
+              <% else %>
+                <div class="image__content" >
+                <%= image_tag content.image_content.url, width: '370px' %>
+                </div>
+              <% end %>
+            </div>
+            <div class='content__info'>
+              <h3 class='content__title'>
+                <%= content.title %>
+              </h3>
+              <p class='content__overview'>
+                <%=safe_join(content.overview.split("\n"),tag(:br))%>
+              </p>
+            </div>
+            <% end %>
+            <%= link_to content.user.name, user_path(content.user.id) %><br />
+            <%= link_to content.user.occupation, user_path(content.user.id) %><br />        
+          </li>
+        <% end %>
+        <%# <%= render "contents/content", contents: @contents %> 
+      </ul>
+    <% else %>
+      <h1>コンテンツはありません！</h1>
+    <% end %>
+    <%# <%= paginate @contents %>
+  </div>
+</div>

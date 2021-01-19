@@ -4,12 +4,14 @@ class Content < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  belongs_to :category
 
   with_options presence: true do
     validates :title
     validates :overview
     validates :writing
     validates :source
+    validates :category_id
   end
 
   validates :video_content, presence: true, unless: :image_content?
