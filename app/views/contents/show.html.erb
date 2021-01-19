@@ -39,8 +39,8 @@
         <div class="content__detail">
           <p class="detail__title">カテゴリー</p>
           <p class="detail__message">
-            <%= link_to "#{@category_parent.name}", "#" %>
-            <%= link_to "#{@category_child.name}", "#" %>
+            <%= "#{@category_parent.name}" %>
+            <%= link_to "#{@category_child.name}", category_path(@content.category.id) %>
           </p>
         </div>
         <div class="content__detail">
