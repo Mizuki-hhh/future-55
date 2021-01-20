@@ -18,8 +18,10 @@ class ContentsController < ApplicationController
     @category_children = Category.find_by(id: params[:category_id])
     @content = Content.new(content_params)
     if @content.save
+      flash[:notice] = 'コンテンツの投稿が完了しました'
       redirect_to root_path
     else
+      flash[:alert] = 'すべて記入して下さい（画像か動画はどちらかまたは両方を添付して下さい）'
       redirect_to controller: :contents, action: :new
     end
   end

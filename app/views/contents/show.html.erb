@@ -7,7 +7,7 @@
         <%= @content.title %>
       </p>
       <div class="content__date">
-        <%= l @content.created_at %>
+        <%= @content.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
       </div>
       <%= link_to @content.user.name, user_path(@content.user), class: :content__user %>
 

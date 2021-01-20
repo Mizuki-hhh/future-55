@@ -7,6 +7,21 @@
   text-align: center;
 }
 
+// エラーメッセージ
+.notifications {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: rgb(138, 219, 142);
+  }
+
+  .alert {
+    background-color: rgb(223, 89, 41);
+  }
+}
+
+
 
 // キーワード検索
 .search-form {
