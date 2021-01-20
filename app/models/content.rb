@@ -19,4 +19,14 @@ class Content < ApplicationRecord
   validates :video_content, presence: true, unless: :image_content?
   validates :image_content, presence: true, unless: :video_content?
 
+  def self.search(search)
+    if search != ""
+      Content.where('title LIKE(?)', "%#{search}%")
+        .or(Content.where('overview LIKE(?)', "%#{search}%"))
+          .or(Content.where('writing LIKE(?)', "%#{search}%"))
+    else
+      Content.all
+    end
+  end
+
 end

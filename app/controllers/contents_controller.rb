@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
   before_action :set_category, except: [:show]
   before_action :category_parent_array, only: [:new, :create, :edit, :update]
   before_action :set_content, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   # load_and_authorize_resource
 
   def index
@@ -64,6 +64,11 @@ class ContentsController < ApplicationController
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_id]}", ancestry: nil).children
   end
+
+  def search
+    @contents = Content.search(params[:keyword])
+  end
+  
 
   private
 
