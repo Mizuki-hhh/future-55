@@ -8,6 +8,24 @@
 }
 
 
+// キーワード検索
+.search-form {
+  display: flex;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.search-form .search-input {
+  width: 100%;
+  margin-right: 10px;
+}
+
+.search-form .search-btn {
+  width: 20%;
+}
+
+
+
 // コンテンツ一覧
 
 .contents {

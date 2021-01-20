@@ -10,6 +10,11 @@
 <div class='contents'>
   <h2 class='title'>コンテンツ一覧</h2>
 
+    <%= form_with(url: search_contents_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "投稿コンテンツを検索", class: "search-input" %>
+    <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+
   <ul class='content__lists'>
 
     <% @contents.each do |content| %>
