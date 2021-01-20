@@ -1,0 +1,15 @@
+<div class="favorite-link" id="favorite-link-#{@content.id}">
+  <% if user_signed_in? %>
+    <% if current_user.favorites.find_by(content_id: content.id) %>
+      <%= link_to content_unfavorite_path(content.id), method: :delete, remote: true do %>
+        <%= image_tag "pinkheart16px",size: '20x20', class:"heart__icon", id:"heart-#{content.id}" %>
+          <%= content.favorites.count.to_s %>
+      <% end %>
+    <% else %>
+      <%= link_to content_favorite_path(content.id), method: :post, remote: true do %>
+        <%= image_tag "grayheart16px", size: '20x20', class: "heart__icon__empty", id: "heart-#{content.id}" %>
+          <%= content.favorites.count.to_s %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

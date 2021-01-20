@@ -37,6 +37,7 @@
           <p class='content__user_occupation'>
             <%= link_to content.user.occupation, user_path(content.user.id) %><br />
           </p>
+          <%= render partial: 'contents/contents', locals: { content: content } %>
         </div>
         <% end %>
       </li>

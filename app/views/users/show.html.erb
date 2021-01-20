@@ -54,6 +54,7 @@
                 <p class='content__overview'>
                   <%=safe_join(content.overview.split("\n"),tag(:br))%>
                 </p>
+                <%= render partial: 'contents/contents', locals: { content: content } %>
               </div>
             <% end %>
             </li>
@@ -69,8 +70,42 @@
           <p>We are shaped and fashioned by what we love.</p>
           <p>Your life is worth much more than gold.</p>
           </h2>
-        <% elsif @user.student? && current_user == @user %>
+        <% elsif current_user == @user %>
           <h2 class='student__own_display'>お気に入りコンテンツ一覧</h2>
+
+        <% unless @favorite_contents.blank? %>
+                <ul class="lists">
+                  <% @favorite_contents.each do |content| %>
+                    <li class='list'>
+                      <%= link_to content_path(content.id) do %>
+                      <div class='content__img'>
+                        <% if content.video_content.present? %>
+                          <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
+                        <% else %>
+                          <div class="image__content" >
+                          <%= image_tag content.image_content.url, width: '370px' %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class='content__info'>
+                        <h3 class='content__title'>
+                          <%= content.title %>
+                        </h3>
+                        <p class='content__overview'>
+                          <%=safe_join(content.overview.split("\n"),tag(:br))%>
+                        </p>
+                      </div>
+                      <% end %>
+                      <%= link_to content.user.name, user_path(content.user.id) %><br />
+                      <%= link_to content.user.occupation, user_path(content.user.id) %><br /> 
+                      <%= render partial: 'contents/contents', locals: { content: content } %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <h1>コンテンツはありません！</h1>
+              <% end %>
+
         <% elsif @user.student? %>
           <h2 class='student__from_students'>
           <p>学生のマイページは表示できません。</p>
