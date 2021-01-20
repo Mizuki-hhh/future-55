@@ -1,3 +1,6 @@
-$("#<%= @id_name %>").html('<%= escape_javascript(render("favorites/favorite", content: @content  )) %>');
-$("#<%= @id_heart %>").removeClass('heart__icon__empty');
-$("#<%= @id_heart %>").addClass('heart__icon');
+<%# $("#<%= @id_name ").html('<%= escape_javascript(render("favorites/favorite", content: @content  )) %>
+<%# '); %>
+<%# $("#<%= @id_heart ").removeClass('heart__icon__empty'); %>
+<%# $("#<%= @id_heart ").addClass('heart__icon'); %>
+
+$("#<%= @id_name %>").html("<%= escape_javascript(render partial:'favorite', locals: {content: @content, favorites: @favorites, favorite: @favorite}) %>");

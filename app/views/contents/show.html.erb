@@ -55,6 +55,12 @@
             <%= raw Rinku.auto_link(h(@content.source), :urls, 'target="_blank" rel="noopener noreferrer"') %>
           </p>
         </div>
+        <div class="content__detail">
+          <p class="detail__title">Like!</p>
+          <p class="detail__message">
+            <%= render partial: 'contents/contents',locals: { content: @content } %>
+          </p>
+        </div>
       </div>
       <div class="content__comments">
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
