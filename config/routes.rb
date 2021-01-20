@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     delete '/favorite/:content_id' => 'favorites#unfavorite', as: 'unfavorite'
     collection do
       get 'get_category_children', defaults: { format: 'json' }
+      get 'search'
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
