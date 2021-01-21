@@ -7,5 +7,6 @@ FactoryBot.define do
      writing { Faker::Lorem.paragraphs }
      source { Faker::Internet.url }
      association :user
+    association :category
   end
 end
