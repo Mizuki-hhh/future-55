@@ -12,6 +12,9 @@ class ContentsController < ApplicationController
 
   def new
     @content = Content.new
+    if current_user.student?
+      redirect_to controller: :contents, action: :index
+    end
   end
 
   def create
