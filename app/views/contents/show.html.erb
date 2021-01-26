@@ -86,7 +86,7 @@
                   <%= safe_join(comment.text.split("\n"),tag(:br)) %>
                 </div>
                 <div class="comment__bottom">
-                  <div><%= link_to comment.user.name, user_path(comment.user), class: :comment_user %></div>
+                  <div><%= link_to comment.user.name, user_path(comment.user), class: :comment__user %></div>
                   <div><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
                 </div>
               </li>

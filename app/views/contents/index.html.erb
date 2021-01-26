@@ -16,9 +16,6 @@
 
       <div class="box fr__right">
 
-        <%# <div class='top__slogan'>
-          <h2>より良き未来の実現へ</h2>
-        </div> %>
         <div class='line__space'>
         </div>
 
@@ -35,7 +32,6 @@
                           <% parent.children.each do |child| %>
                             <li class='category__child--name'>
                               <%= link_to child.name, category_path(child.id) %>
-                              <%# @contents.ids %>
                             </li>
                           <% end %>
                         </ul>

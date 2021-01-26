@@ -1,0 +1,154 @@
+.fillin__contents--form {
+  background-image: url('../milky_way.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(63, 61, 61);
+  background: linear-gradient(to top, rgba(252, 230, 251, 0.7) 0%, rgba(240, 248, 248, 0.4) 100%),url('../milky_way.jpg');
+}
+/* .fillin__contents--main { */
+  /* width: 70vw; */
+  /* min-width: 350px;
+  padding: 5vh 5vw;
+  margin: 5vw auto; */
+  /* text-align: center; */
+/* } */
+.white__bg {
+  background-color: white;
+  /* width: 70vw auto; */
+  /* min-width: 450px; */
+  margin: 2vw 5vw;
+  padding: 5vh;
+  text-align: center;
+}
+.fillin__contents--submain {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+.indispensable {
+  background-color: #ea352e;
+  margin: 0 0 4px 8px;
+  padding: 2px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: bold;
+}
+.sub__warning {
+  color: #ea352e;
+}
+.weight__bold--text {
+  font-weight: bold;
+  min-width: 170px;
+  margin-bottom: 10px;
+}
+.weight__bold--text > p {
+  font-size: smaller;
+  margin-top: 3px;
+}
+.image__video--upload {
+  /* display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; */
+  padding: 2vh 0;
+}
+.either__ok {
+  font-weight: bold;
+  font-size: smaller;
+  margin-bottom: 4px;
+}
+.click__upload {
+  margin: 15px 0;
+  min-width: 250px;
+}
+.click__upload > p {
+  margin-bottom: 5px;
+}
+
+
+
+
+
+.fillin__contents {
+  padding: 2vh 0;
+}
+.content__text {
+  /* width: auto; */
+  padding: 8px 8px 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.listing-select-wrapper__box--select {
+  padding: 6px 6px 4px;
+  border-radius: 4px;
+  /* border: 1px solid #ccc; */
+  font-size: 14px;
+  color: rgb(63, 61, 61);
+}
+
+
+
+.fillin__contents--btn {
+  /* width: 100vw; */
+  text-align: center;
+  flex-direction: column;
+  display: block;
+  margin-top: 18px;
+}
+.post__btn, .update__btn {
+  background-color: #14b7b9;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  width: 25vw;
+  height: 40px;
+  font-size: 14px;
+  margin-bottom: 4vh;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fillin__contents--footer {
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.small__footer--menu {
+  display: flex;
+  width: 50vh;
+  justify-content: space-between;
+}
+
+.small__footer--menu > li > a {
+  color: #fff;
+}
+
+.inc {
+  font-size: 13px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* edit page */
+.edit__contents--form {
+  background-image: url('../ocean.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(63, 61, 61);
+  background: linear-gradient(to top, rgba(252, 230, 251, 0.7) 0%, rgba(240, 248, 248, 0.4) 100%),url('../ocean.jpg');
+}
