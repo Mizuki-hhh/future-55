@@ -1,101 +1,161 @@
-<%= link_to "トップページ", root_path %>
-
-<main class="main">
-  <div class="inner">
-    <div class="content__wrapper">
-      <p class= "content__hedding">
-        <%= @content.title %>
-      </p>
-      <div class="content__date">
-        <%= @content.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-      </div>
-      <%= link_to @content.user.name, user_path(@content.user), class: :content__user %>
-
-      <%if user_signed_in? && current_user.id == @content.user_id %>
-        <div class="content__manage">
-          <%= link_to "編集", edit_content_path(@content.id), method: :get, class: :content__btn %>
-          <%= link_to "削除", content_path(@content.id), method: :delete, class: :content__btn %>
-        </div>
-      <% end %>
-      <div class="content__imagevideo">
-        <% if @content.video_content.present? %>
-          <div class="video__content">
-          <%= video_tag(@content.video_content.url, :controls => true, width: "370px")  %>
-          </div>
-        <% end %>
-        <% if @content.image_content.present? %>
-          <div class="image__content" >
-          <%= image_tag @content.image_content.url, width: '370px' %>
-          </div>
-        <% end %>
-      </div>
-      <div class="content__body">
-        <div class="content__detail">
-          <p class="detail__title">概要</p>
-          <p class="detail__message">
-            <%= safe_join(@content.overview.split("\n"),tag(:br)) %>
-          </p>
-        </div>
-        <div class="content__detail">
-          <p class="detail__title">カテゴリー</p>
-          <p class="detail__message">
-            <%= "#{@category_parent.name}" %>
-            <%= link_to "#{@category_child.name}", category_path(@content.category.id) %>
-          </p>
-        </div>
-        <div class="content__detail">
-          <p class="detail__title">詳細</p>
-          <p class="detail__message">
-            <%= safe_join(@content.writing.split("\n"),tag(:br)) %>
-          </p>
-        </div>
-        <div class="content__detail">
-          <p class="detail__title">URL</p>
-          <p class="detail__message">
-            <%= raw Rinku.auto_link(h(@content.source), :urls, 'target="_blank" rel="noopener noreferrer"') %>
-          </p>
-        </div>
-        <div class="content__detail">
-          <p class="detail__title">Like!</p>
-          <p class="detail__message">
-            <%= render partial: 'contents/contents',locals: { content: @content } %>
-          </p>
-        </div>
-      </div>
-      <div class="content__comments">
-        <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
-        <% if user_signed_in? %>
-          <%= form_with(model: [@content, @comment], local: true) do |f|%>
-            <div class="field">
-              <%= f.label :text, "コメント" %><br />
-              <%= f.text_area :text ,size: '50x3' %>
-            </div>
-            <div class="actions">
-              <%= f.submit "送信する", class: :form__btn  %>
-            </div>
-          <% end %>
-        <% end %>
-        <%# // ログインしているユーザーには上記を表示する %>
-        <div id='comments'>
-        <ul class="comments__lists">
-          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
-          <% if @comments %>
-            <% @comments.each do |comment| %>
-              <li class="comments__list">
-                <div class="comment__top">
-                  <%= safe_join(comment.text.split("\n"),tag(:br)) %>
-                </div>
-                <div class="comment__bottom">
-                  <div><%= link_to comment.user.name, user_path(comment.user), class: :comment__user %></div>
-                  <div><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
-                </div>
-              </li>
-            <% end %>
-          <% end %>
-          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
-        </ul>
-        </div>
-      </div>
+<%# form here, separate window!!! %>
+<div class='frame'>
+    <%# top header %>
+    <div class="box fr__top" id='fr__top'>
+      <%= render 'shared/header' %>
     </div>
-  </div>
-</main>
+
+    <%# middle contents %>
+    <div class='middle'>
+      <%# side menu bar %>
+      <div class="box fr__left">
+        <div class="cp__navi">
+          <div id="cp__sidenav" class="sidenav">
+            <%= link_to 'HOME', root_path, class:'a__nav', id:'home' %>
+            <%= link_to 'ABOUT', "#", class:'a__nav', id:'news' %>
+            <%= link_to '学生の方々', "#", class:'a__nav', id:'contact' %>
+            <%= link_to '大人の方々', "#", class:'a__nav', id:'about' %>
+          </div>
+        </div>
+      </div>
+
+      <%# contents & sub header %>
+      <div class="box fr__right">
+
+        <div class='line__space'>
+        </div>
+
+        <main class="detail__wrapper">
+          <div class="inner">
+            <div class="detail__content">
+              <div class='detail__heading--flex'>
+                <p class= "detail__heading">[ <%= @content.title %> ]</p>
+                <%# <div class="content__date"> %>
+                  <p class='content__date'><%= @content.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                <%# </div> %>
+                <%# <div class='detail__contributor'> %>
+                  <p class='detail__contributor'><%= link_to "投稿者：#{@content.user.name} さん", user_path(@content.user), class: :content__user %></p>
+                <%# </div> %>
+
+                <%if user_signed_in? && current_user.id == @content.user_id %>
+                  <div class="content__manage">
+                    <%= link_to "編集", edit_content_path(@content.id), method: :get, class: :content__btn %>
+                    <%= link_to "削除", content_path(@content.id), method: :delete, class: :content__btn %>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class='detail__flex'>
+                <div class="content__imagevideo">
+                  <% if @content.video_content.present? %>
+                    <div class="video__content">
+                    <%= video_tag(@content.video_content.url, :controls => true, width:'80%')  %>
+                    </div>
+                  <% end %>
+                  <% if @content.image_content.present? %>
+                    <div class="image__content" >
+                    <%= image_tag @content.image_content.url, width: '80%' %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="detail__text--body">
+                  <div class='detail__body--line'>
+                    <div class='detail__separate'>
+                      <div class="content__detail">
+                        <p class="detail__title">概要</p>
+                        <p class="detail__message">
+                          <%= safe_join(@content.overview.split("\n"),tag(:br)) %>
+                        </p>
+                      </div>
+                      <div class="content__detail">
+                        <p class="detail__title">カテゴリー</p>
+                        <p class="detail__message">
+                          <%= "#{@category_parent.name}" %>
+                          <%= link_to "#{@category_child.name}", category_path(@content.category.id) %>
+                        </p>
+                      </div>
+                    </div>
+                    <div class='detail__thing'>
+                      <div class="detail__detail">
+                        <p class="detail__title">詳細</p>
+                        <p class="detail__detail--msg">
+                          <%= safe_join(@content.writing.split("\n"),tag(:br)) %>
+                        </p>
+                      </div>
+                    </div>
+                    <div class='detail__separate'>
+                      <div class="content__detail">
+                        <p class="detail__title">URL</p>
+                        <p class="detail__message">
+                          <%= raw Rinku.auto_link(h(@content.source), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+                        </p>
+                      </div>
+                      <div class="content__detail">
+                        <p class="detail__title">Like!</p>
+                        <p class="detail__message">
+                          <%= render partial: 'contents/contents',locals: { content: @content } %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class='comment__wrapper'>
+                <div class='comment__painting--wrapper'>
+                </div>
+                <div class='comment__text--wrapper'>
+                  <div class="content__comments">
+                    <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+                    <% if user_signed_in? %>
+                      <%= form_with(model: [@content, @comment], local: true) do |f|%>
+                        <div class="comment__field">
+                          <div class='comment__main--text'>
+                            [ コメント ]
+                          </div>
+                            <%# <%= f.label :text, "コメント" %>
+                            <%= f.text_area :text ,size: '45x3' %>
+                        </div>
+                        <div class="actions">
+                          <%= f.submit "送信する", class: :form__btn  %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                    <%# // ログインしているユーザーには上記を表示する %>
+                    <div id='comments'>
+                    <ul class="comments__lists">
+                      <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+                      <% if @comments %>
+                        <% @comments.each do |comment| %>
+                          <li class="comments__list">
+                            <div class="comment__top">
+                              <%= safe_join(comment.text.split("\n"),tag(:br)) %>
+                            </div>
+                            <div class="comment__bottom">
+                              <div class='comment__name'><%= link_to comment.user.name, user_path(comment.user), class: :comment__user %></div>
+                              <div class='comment__date'><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+                            </div>
+                          </li>
+                        <% end %>
+                      <% end %>
+                      <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+                    </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </main>
+
+      </div>
+
+
+    </div>
+
+    <%# bottom footer %>
+    <div class="box fr__bottom">
+      <%= render 'shared/footer' %>
+    </div>
+</div>
