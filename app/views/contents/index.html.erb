@@ -1,8 +1,12 @@
 <div class='frame'>
+    <%# top header %>
     <div class="box fr__top" id='fr__top'>
       <%= render 'shared/header' %>
     </div>
+
+    <%# middle contents %>
     <div class='middle'>
+      <%# side menu bar %>
       <div class="box fr__left">
         <div class="cp__navi">
           <div id="cp__sidenav" class="sidenav">
@@ -11,9 +15,10 @@
             <%= link_to '学生の方々', "#", class:'a__nav', id:'contact' %>
             <%= link_to '大人の方々', "#", class:'a__nav', id:'about' %>
           </div>
-      </div>
+        </div>
       </div>
 
+      <%# contents & sub header %>
       <div class="box fr__right">
 
         <div class='line__space'>
@@ -75,16 +80,16 @@
                   <% end %>
                 </div>
                 <div class='content__info'>
-                  <h3 class='content__title'>
-                    <%= content.title %>
-                  </h3>
+                  <p class='content__title'>
+                    [ <%= content.title %> ]
+                  </p>
                   <p class='content__overview'>
                     <%=safe_join(content.overview.split("\n"),tag(:br))%>
                   </p>
-                  <p class='content__user_name'>
+                  <p class='content__user--name'>
                     <%= link_to content.user.name, user_path(content.user.id) %><br />
                   </p>
-                  <p class='content__user_occupation'>
+                  <p class='content__user--occupation'>
                     <%= link_to content.user.occupation, user_path(content.user.id) %><br />
                   </p>
                   <%= render partial: 'contents/contents', locals: { content: content } %>
@@ -97,9 +102,8 @@
       </div>
     </div>
 
-
+    <%# bottom footer %>
     <div class="box fr__bottom">
       <%= render 'shared/footer' %>
     </div>
-  </div>
-  </div>
+</div>
