@@ -55,8 +55,8 @@
                     <%=safe_join(content.overview.split("\n"),tag(:br))%>
                   </p>
                 <% end %>
-                  <%= link_to content.user.name, user_path(content.user.id) %><br />
-                  <%= link_to content.user.occupation, user_path(content.user.id) %><br />
+                  <%= link_to "投稿者：#{content.user.name}", user_path(content.user.id) %><br />
+                  <%= link_to "所属：#{content.user.occupation}", user_path(content.user.id) %><br />
                   <%= render partial: 'contents/contents', locals: { content: content } %>
                 </div>
               </li>

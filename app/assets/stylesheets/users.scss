@@ -9,6 +9,7 @@ ul.show__ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   margin-left: 30px;
 }
 .show__contents--list {

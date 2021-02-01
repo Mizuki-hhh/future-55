@@ -87,10 +87,10 @@
                     <%=safe_join(content.overview.split("\n"),tag(:br))%>
                   </p>
                   <p class='content__user--name'>
-                    <%= link_to content.user.name, user_path(content.user.id) %><br />
+                    <%= link_to "投稿者：#{content.user.name}", user_path(content.user.id) %><br />
                   </p>
                   <p class='content__user--occupation'>
-                    <%= link_to content.user.occupation, user_path(content.user.id) %><br />
+                    <%= link_to "所属 ：#{content.user.occupation}", user_path(content.user.id) %><br />
                   </p>
                   <%= render partial: 'contents/contents', locals: { content: content } %>
                 </div>

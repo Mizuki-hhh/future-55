@@ -203,9 +203,9 @@
   overflow-anchor: none;
   flex-wrap: wrap;
 }
-.list {
+// .list {
   // width: 33vh;
-}
+// }
 .content__lists {
   // width: 100vw;
   display: flex;
@@ -244,6 +244,7 @@
   flex-wrap: wrap;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  margin-bottom: 6px;
 }
 
 a {
