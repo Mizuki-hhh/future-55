@@ -1,120 +1,163 @@
+<%# form here, separate window!!! %>
+<div class='frame'>
+    <%# top header %>
+    <div class="box fr__top" id='fr__top'>
+      <%= render 'shared/header' %>
+    </div>
 
-<%= link_to "トップページ", root_path %>
+    <%# middle contents %>
+    <div class='middle'>
+      <%# side menu bar %>
+      <div class="box fr__left">
+        <div class="cp__navi">
+          <div id="cp__sidenav" class="sidenav">
+            <%= link_to 'HOME', root_path, class:'a__nav', id:'home' %>
+            <%= link_to 'ABOUT', "#", class:'a__nav', id:'news' %>
+            <%= link_to '学生の方々', "#", class:'a__nav', id:'contact' %>
+            <%= link_to '大人の方々', "#", class:'a__nav', id:'about' %>
+          </div>
+        </div>
+      </div>
 
-<div class="main">
-  <div class="inner">
-    <div class="user__wrapper">
-      <h2 class="page-heading">
-        <%= @user.name + "さんの情報"%>
-      </h2>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">名前</th>
-            <td class="table__col2"><%= @user.name %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">所属</th>
-            <td class="table__col2"><%= @user.occupation %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">プロフィール</th>
-            <td class="table__col2"><%= @user.occupation %>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="user__card">
-        <%# 部分テンプレートでそのユーザーが投稿したプロトタイプ投稿一覧を表示する %>
-        <%# <%= render partial: 'prototypes/prototype', collection: @contents %>
-        <li class='list'>
+      <%# contents & sub header %>
+      <div class="box fr__right">
 
-        <% if @user.contributor? && @contents.present? %>
-          
-          <h2 class="page-heading">
-            <%= @user.name + "さんの投稿コンテンツ"%>
-          </h2>
+        <div class='line__space'>
+        </div>
 
-          <% @contents.each do |content| %>
-            <li class='list'>
-            <%= link_to content_path(content.id) do %>
-              <div class='content__img'>
-                <% if content.video_content.present? %>
-                  <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
-                <% else %>
-                  <div class="image__content" >
-                  <%= image_tag content.image_content.url, width: '370px' %>
-                  </div>
-                <% end %>
-              </div>
-              <div class='content__info'>
-                <h3 class='content__title'>
-                  <%= content.title %>
-                </h3>
-                <p class='content__overview'>
-                  <%=safe_join(content.overview.split("\n"),tag(:br))%>
-                </p>
-                <%= render partial: 'contents/contents', locals: { content: content } %>
-              </div>
-            <% end %>
-            </li>
-          <% end %>
-        <% elsif @user.contributor? %>
-          <h2 class='no__content'>投稿コンテンツはありません！</h2>
-        <% end %>
+        <div class="show__main">
+          <div class="inner">
+            <div class="user__wrapper">
+              <h2 class="page__heading">
+                [ <span class='name__large'><%= @user.name %></span>さんのマイページ ]
+              </h2>
+              <table class="table">
+                <tbody>
+                  <%# <tr>
+                    <th class="table__col1">お名前</th>
+                    <td class="table__col2"><%= @user.name %>
+                  <%# </tr> %>
+                  <tr>
+                    <% if @user.contributor? %>
+                    <th class="table__col1">所属</th>
+                    <td class="table__col2"><%= @user.occupation %></td>
+                    <% end %>
+                  </tr>
+                  <tr>
+                    <th class="table__col1">プロフィール</th>
+                    <td class="table__col2"><%= @user.profile %>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div class="user__card">
+                <%# <ul> %>
 
-        <% if current_user.nil? && @user.student? %>
-          <h2 class='student__from_logoutuser'>
-          <p>ログインしていないユーザーの方へ<br />学生のマイページは表示できません。</p>
-          <p>Without haste, but without rest.</p>
-          <p>We are shaped and fashioned by what we love.</p>
-          <p>Your life is worth much more than gold.</p>
-          </h2>
-        <% elsif current_user == @user %>
-          <h2 class='student__own_display'>お気に入りコンテンツ一覧</h2>
-
-        <% unless @favorite_contents.blank? %>
-                <ul class="lists">
-                  <% @favorite_contents.each do |content| %>
-                    <li class='list'>
-                      <%= link_to content_path(content.id) do %>
-                      <div class='content__img'>
-                        <% if content.video_content.present? %>
-                          <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
-                        <% else %>
-                          <div class="image__content" >
-                          <%= image_tag content.image_content.url, width: '370px' %>
+                <% if @user.contributor? && @contents.present? %>
+                  <h2 class="page__heading">
+                    [ <span class='name__large'><%= @user.name %></span>さんの投稿コンテンツ ]
+                  </h2>
+                    <ul class='show__ul'>
+                      <% @contents.each do |content| %>
+                        <li class='show__contents--list'>
+                        <%= link_to content_path(content.id) do %>
+                          <div class='file__text--contents'>
+                            <div class='image__video--show'>
+                              <% if content.video_content.present? %>
+                                <div class='video__content'>
+                                <%= video_tag(content.video_content.url, :controls => true, width: "300px")  %>
+                                </div>
+                              <% else %>
+                                <div class='image__content' >
+                                <%= image_tag content.image_content.url, width: '300px' %>
+                                </div>
+                              <% end %>
+                            </div>
+                            <div class='content__info'>
+                              <h3 class='content__title'>
+                                <%= content.title %>
+                              </h3>
+                              <p class='content__overview'>
+                                <%=safe_join(content.overview.split("\n"),tag(:br))%>
+                              </p>
+                              <%= render partial: 'contents/contents', locals: { content: content } %>
+                            </div>
                           </div>
                         <% end %>
-                      </div>
-                      <div class='content__info'>
-                        <h3 class='content__title'>
-                          <%= content.title %>
-                        </h3>
-                        <p class='content__overview'>
-                          <%=safe_join(content.overview.split("\n"),tag(:br))%>
-                        </p>
-                      </div>
+                        </li>
                       <% end %>
-                      <%= link_to content.user.name, user_path(content.user.id) %><br />
-                      <%= link_to content.user.occupation, user_path(content.user.id) %><br /> 
-                      <%= render partial: 'contents/contents', locals: { content: content } %>
-                    </li>
-                  <% end %>
-                </ul>
-              <% else %>
-                <h1>コンテンツはありません！</h1>
-              <% end %>
+                    </ul>
+                <% elsif @user.contributor? %>
+                  <h2 class='no__content'>投稿コンテンツはありません！</h2>
+                <% end %>
 
-        <% elsif @user.student? %>
-          <h2 class='student__from_students'>
-          <p>学生のマイページは表示できません。</p>
-          <p>There is always a better way.</p>
-          <p>If you can dream it, you can do it.</p>
-          </h2>
-        <% end %>
-        </li>
+                <% if current_user.nil? && @user.student? %>
+                <%# <% if current_user.nil? && @user.student? %>
+                  <h2 class='no__look--display'>
+                  <p>ログインしていないユーザーの方へ<br />学生のマイページは表示できません。</p>
+                  <p>Without haste, but without rest.</p>
+                  <p>We are shaped and fashioned by what we love.</p>
+                  <p>Your life is worth much more than gold.</p>
+                  </h2>
+                <% elsif current_user == @user %>
+                  <h2 class='page__heading'>
+                   [ お気に入りコンテンツ一覧 ]
+                  </h2>
+                      <% unless @favorite_contents.blank? %>
+                        <ul class="show__ul">
+                          <% @favorite_contents.each do |content| %>
+                            <li class='show__contents--list'>
+                              <%= link_to content_path(content.id) do %>
+                              <div class='image__video--show'>
+                                <% if content.video_content.present? %>
+                                  <div class='video__content'>
+                                  <%= video_tag(content.video_content.url, :controls => true, width: "300px")  %>
+                                  </div>
+                                <% else %>
+                                  <div class='image__content' >
+                                  <%= image_tag content.image_content.url, width: '300px' %>
+                                  </div>
+                                <% end %>
+                              </div>
+                              <div class='content__info'>
+                                <h3 class='content__title'>
+                                  <%= content.title %>
+                                </h3>
+                                <p class='content__overview'>
+                                  <%=safe_join(content.overview.split("\n"),tag(:br))%>
+                                </p>
+                              <% end %>
+                                <%= link_to "投稿者：#{content.user.name}", user_path(content.user.id) %><br />
+                                <%= link_to "所属：#{content.user.occupation}", user_path(content.user.id) %><br /> 
+                              </div>
+                              <%# <%= render partial: 'contents/contents', locals: { content: content } %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% else %>
+                        <h1 class='no__content'>コンテンツはありません！</h1>
+                      <% end %>
+
+                <% elsif @user.student? %>
+                  <h2 class='no__look--display'>
+                  <p>学生のマイページは表示できません。</p>
+                  <p>There is always a better way.</p>
+                  <p>If you can dream it, you can do it.</p>
+                  </h2>
+                <% end %>
+                <%# </ul> %>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+
     </div>
-  </div>
+
+    <%# bottom footer %>
+    <div class="box fr__bottom">
+      <%= render 'shared/footer' %>
+    </div>
 </div>

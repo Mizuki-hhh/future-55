@@ -1,0 +1,53 @@
+// Footer
+.golden__saying {
+  color: white;
+  margin-bottom: 25px;
+  text-shadow: 0 0 5px rgba(254, 214, 227, 0.8);
+  font-family: fantasy;
+}
+
+.golden__saying > h3 {
+  font-size: smaller;
+}
+
+.footer {
+  width: 100vw;
+  padding: 5vh 0;
+  color: #FFF;
+  background-color: #c6ecec;
+  background: linear-gradient(to bottom, #a9dfe0, #f5f5f5);
+  text-align: center;
+}
+
+.footer__contents {
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.future__details {
+  display: flex;
+  margin: 0 4vw;
+  justify-content: space-around;
+}
+
+.footer__content-head {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer__link {
+  color: #FFF;
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.logo__transparent {
+  // width: 20vh;
+  vertical-align: bottom;
+}
+
+.footer>p {
+  font-size: 14px;
+}

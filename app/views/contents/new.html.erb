@@ -1,59 +1,138 @@
-<h1>Tops#new</h1>
-<p>Find me in app/views/tops/new.html.erb</p>
+<div class='fillin__contents--form'>
 
-#ここから
-<%= form_with model: @content, local: true do |f| %>
+  <header class='fillin__contents--header'>
+    <%= link_to image_tag("logo_transparent_copy.png", width:'200px', class:"logo__transparent"), root_path %>
+  </header>
 
-<%= render 'shared/error_messages', model: f.object %>
+    <div class='fillin__contents--main'>
+      <div class='white__bg'>
+        <h1 class='fillin__contents--submain'>コンテンツ新規投稿</h1>
+        <%= form_with model: @content, local: true do |f| %>
 
-  <div class="field">
-    <%= f.label :title, "タイトル" %><br />
-    <%= f.text_field :title, size: '35x5' %>
-  </div>
+        <%= render 'shared/error_messages', model: f.object %>
 
-  <div class="field">
-    <%= f.label :image, "画像" %><br />
-    <%= f.file_field :image_content, :accept => 'image/jpeg,image/gif,image/png' %>
-  </div>
+        <div class='fillin__contents'>
+          <div class='weight__bold--text'>
+            タイトル
+            <span class='indispensable'>必須</span>
+          </div>
+          <div class="field">
+            <%# <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title, size: '35x5', class:'content__text', id:'content__name', placeholder:"タイトルを入力してください" %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :video, "動画" %><br />
-    <%= f.file_field :video_content, :accept => 'video/*' %>
-  </div>
+        <div class='image__video--upload'>
+          <div class='either__ok'>
+            <p><span class='indispensable'>どちらか一つ必須</span>
+            どちらとも投稿していただいても構いません。</p>
+          </div>
+          <div class='image__upload'>
+            <div class='weight__bold--text'>
+              コンテンツの画像
+            </div>
+            <div class='click__upload'>
+              <p>
+                クリックしてファイルをアップロード
+              </p>
+              <div class="field">
+                <%# <%= f.label :image, "画像" %>
+                <%= f.file_field :image_content, :accept => 'image/jpeg,image/gif,image/png'%>
+              </div>
+            </div>
+          </div>
+          <div class='video__upload'>
+            <div class='weight__bold--text'>
+              コンテンツの動画
+            </div>
+            <div class='click__upload'>
+              <p>
+                クリックしてファイルをアップロード
+              </p>
+              <div class="field">
+                <%# <%= f.label :video, "動画" %>
+                <%= f.file_field :video_content, :accept => 'video/*' %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :overview %><br />
-    <%= f.text_area :overview, size: '80x10' %>
-  </div>
+        <div class='fillin__contents'>
+          <div class='weight__bold--text'>
+            概要（キーワード）
+            <span class='indispensable'>必須</span>
+          </div>
+          <div class="field">
+          <%# <%= f.label :overview %>
+            <%= f.text_area :overview, size: '80x10', class:'content__text', id:'content__overview', placeholder:'概要とキーワードを入力してください。キーワードを記入すると、検索しやすくなります。' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :writing %><br />
-    <%= f.text_area :writing, size: '100x20' %>
-  </div>
+        <div class='fillin__contents'>
+          <div class='weight__bold--text'>
+            コンテンツの詳細
+            <span class='indispensable'>必須</span>
+          </div>
+          <div class="field">
+            <%# <%= f.label :writing %>
+            <%= f.text_area :writing, size: '80x20', class:'content__text', id:'content__writing', placeholder:'コンテンツの詳細を記入してください。' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source, size: '50x5' %>
-  </div>
+        <div class='fillin__contents'>
+          <div class='weight__bold--text'>
+            コンテンツ元のURLまたは投稿に関連したURL
+            <span class='indispensable'>必須</span>
+            <p>(特にない場合は、投稿者に関連するURLを記入してください)</p>
+          </div>
+          <div class="field">
+              <%# <%= f.label :source %>
+            <%= f.text_field :source, size: '50x5' , class:'content__text', id:'content__url', placeholder:'例) https://example.com' %>
+          </div>
+        </div>
 
-  <div class="field">
-      <div class='listing-form-box'> 
-          <div class='listing-content-detail__category'>
-            <%= f.label :category, class: 'listing-default__label' %><br />
-              <div class='listing-select-wrapper'>
-                <div class="listing-select-wrapper__box">
-                  <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} %>
-                </div>
-                <div class="listing-select-wrapper__box">
-                  <div class='listing-select-wrapper__box--select', id='child_category'></div>
+        <div class='fillin__contents'>
+          <div class='weight__bold--text'>
+            カテゴリー
+            <span class='indispensable'>必須</span>
+            <p class='category__warning'>必ず<span class='sub__warning'>2つ目</span>のカテゴリーまで選択してください</p>
+          </div>
+          <div class="field">
+            <div class='listing-form-box'> 
+              <div class='listing-content-detail__category'>
+                <%# <%= f.label :category, class: 'listing-default__label' %>
+                <div class='listing-select-wrapper'>
+                  <div class="listing-select-wrapper__box">
+                    <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} %>
+                  </div>
+                  <div class="listing-select-wrapper__box">
+                    <div class='listing-select-wrapper__box--select', id='child_category'></div>
+                  </div>
                 </div>
               </div>
+            </div>
           </div>
-      </div>
-  </div>
+        </div>
 
-  <div class="#">
-    <%= f.submit "投稿する" ,class:"#" %>
-    <%=link_to 'もどる', root_path, class:"back-btn" %>
-  </div>
-<% end %>
+        <div class="fillin__contents--btn">
+          <%= f.submit "投稿する" ,class:'post__btn' %>
+        </div>
+        <div class='back__to--top'>
+          <%= link_to '←戻る', root_path, class:"back__btn" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+  <footer class='fillin__contents--footer'>
+    <ul class="small__footer--menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">FUTURE利用規約</a></li>
+    </ul>
+    <%= link_to image_tag("logo_transparent_copy.png", width:'200px', class:"logo__transparent"), root_path %>
+    <p class="inc">
+      ©︎FUTURE,Inc.
+    </p>
+  </footer>
+  
+</div>

@@ -4,11 +4,26 @@
 
 // カテゴリー一覧
 
+.categories > li > p {
+  font-size: larger;
+  color: #66cece;
+  padding: 5px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  // background: -webkit-linear-gradient(0deg, #ACB6E5, #86FDE8);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+}
+.categories > li > p:hover {
+  text-shadow: 0 0 5px rgba(20, 183, 185, 0.5);
+}
+
 .categories {
   display: flex;
   height: 10px;
-  margin: 0 auto;
-  width: 100%;
+  // margin: 0 auto;
+  // width: 100%;
 }
 
 .category__search {
@@ -18,6 +33,7 @@
 .categories li {
   list-style: none;
   position: relative;
+  color: aliceblue;
 }
 
 .category__search {
@@ -26,15 +42,17 @@
   display: block;
   height: 1px;
   line-height: 2px;
-  text-align: center;
+  // text-align: center;
   text-decoration: none;
-  width: 100%;
+  // width: 100%;
 }
 
 .categories li li{
   height: 0;
   overflow: hidden;
   transition: .5s;
+  text-align: center;
+  color: aliceblue;
 }
 
 // .category__parent--name {
@@ -44,10 +62,14 @@
 .categories li:hover > ul > li {
   height: 2rem;
   overflow: visible;
+  background-color: rgba(252, 230, 251, 0.526);
+  padding-top: 4px;
+  color: aliceblue;
 }
 
 .category__child--name{
   display: block;
+
 }
 
 .categories li ul li ul {
@@ -55,4 +77,54 @@
   position: absolute;
   top: 0;
   width: 100%;
+  text-align: center;
+
 }
+
+
+
+// categories index
+ul.categories__ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-left: 30px;
+}
+.categories__contents--list {
+  list-style: none;
+  margin: 10px 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 1vw;
+
+}
+.categories__title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: #14b7b9;
+  margin: 10px;
+  padding: 10px;
+}
+.just__category {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: #14b7b9;
+  margin-top: 20px;
+}
+
+// .content__lists {
+//   // width: 100vw;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+//   padding-top: 30px;
+// }
+
+// .content__lists>.list {
+//   // width: 50vh;
+//   padding: 1vw;
+//   margin-bottom: 5vh;
+// }

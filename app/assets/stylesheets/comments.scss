@@ -3,13 +3,67 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.comment__list {
+
+// コメント
+.content__comments{
+  // width: 80%;
+  background-color: #f6f6f6;
+  padding: 20px;
+  margin: 28px 0 40px 0;
+}
+.comment__field {
   padding-left: 20px;
+  width: 100%;
+}
+.comments__lists{
+  margin-top: 20px;
+  padding-left: 20px;
+}
+.actions {
+  padding-left: 20px;
+}
+.comments__list{
+  // padding-left: px;
+  list-style-type: square;
+  padding-bottom: 5px;
+  list-style: none;
+  // padding-left: 20px;
+}
+.comment__list {
+  width: 100%;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+.comment__user{
+  font-size: 16px;
+  color: #999;
+  text-decoration: none;
 }
 
 .comment__bottom {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin-bottom: 5px;
   color: dimgray;
+}
+.comment__name {
+  padding-right: 5px;
+  margin-right: 8px;
+}
+.comment__wrapper {
+  display: flex;
+}
+.comment__painting--wrapper {
+  width: 50%;
+}
+.comment__text--wrapper {
+  width: 50%;
+}
+.comment__main--text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #14b7b9;
+  margin: 5px;
+  padding: 5px;
 }

@@ -25,7 +25,8 @@ class ContentsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = 'すべて記入して下さい（画像か動画はどちらかまたは両方を添付して下さい）'
-      redirect_to controller: :contents, action: :new
+      render :new
+      # redirect_to controller: :contents, action: :new
     end
   end
 

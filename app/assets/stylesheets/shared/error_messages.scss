@@ -1,0 +1,15 @@
+/* エラーメッセージ */
+.notifications {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: #14b7b9;
+    background: -webkit-linear-gradient(0deg, #ACB6E5, #86FDE8);
+  }
+
+  .alert {
+    background-color:#ea352e;
+    background: -webkit-linear-gradient(45deg, rgb(238, 214, 214), rgb(243, 33, 33), #f55a5a);
+  }
+}

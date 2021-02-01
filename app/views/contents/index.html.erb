@@ -1,57 +1,109 @@
-<h1>Contents#index</h1>
-<%= render "shared/header" %>
+<div class='frame'>
+    <%# top header %>
+    <div class="box fr__top" id='fr__top'>
+      <%= render 'shared/header' %>
+    </div>
 
-<% if user_signed_in? %>
-  <div class='user__name'>
-    <%= link_to current_user.name, user_path(current_user.id), class: :mypage__link %>
-  </div>
-<% end %>
-
-<div class='contents'>
-  <h2 class='title'>コンテンツ一覧</h2>
-
-    <%= form_with(url: search_contents_path, local: true, method: :get, class: "search-form") do |form| %>
-    <%= form.text_field :keyword, placeholder: "投稿コンテンツを検索", class: "search-input" %>
-    <%= form.submit "検索", class: "search-btn" %>
-    <% end %>
-
-  <ul class='content__lists'>
-
-    <% @contents.each do |content| %>
-      <li class='list'>
-        <%= link_to content_path(content.id) do %>
-        <div class='content__img'>
-          <% if content.video_content.present? %>
-            <%= video_tag(content.video_content.url, :controls => true, width: "320px")  %>
-          <% else %>
-            <div class="image__content" >
-            <%= image_tag content.image_content.url, width: '320px' %>
-            </div>
-          <% end %>
+    <%# middle contents %>
+    <div class='middle'>
+      <%# side menu bar %>
+      <div class="box fr__left">
+        <div class="cp__navi">
+          <div id="cp__sidenav" class="sidenav">
+            <%= link_to 'HOME', root_path, class:'a__nav', id:'home' %>
+            <%= link_to 'ABOUT', "#", class:'a__nav', id:'news' %>
+            <%= link_to '学生の方々', "#", class:'a__nav', id:'contact' %>
+            <%= link_to '大人の方々', "#", class:'a__nav', id:'about' %>
+          </div>
         </div>
-        <div class='content__info'>
-          <h3 class='content__title'>
-            <%= content.title %>
-          </h3>
-          <p class='content__overview'>
-            <%=safe_join(content.overview.split("\n"),tag(:br))%>
-          </p>
-          <p class='content__user_name'>
-            <%= link_to content.user.name, user_path(content.user.id) %><br />
-          </p>
-          <p class='content__user_occupation'>
-            <%= link_to content.user.occupation, user_path(content.user.id) %><br />
-          </p>
-          <%= render partial: 'contents/contents', locals: { content: content } %>
+      </div>
+
+      <%# contents & sub header %>
+      <div class="box fr__right">
+
+        <div class='line__space'>
         </div>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+
+        <div class='top__display-header'>
+          <ul class="categories">
+            <li>
+              <p>[ カテゴリー ]</p>
+              <%= link_to "#", class: 'category__search' do %>
+                <ul class='category__parent category__list'>
+                  <% @parents.each do |parent| %>
+                    <li class='category__parent--name'>
+                      <%= link_to parent.name, "#" %>
+                        <ul class='caategory__child category__list'>
+                          <% parent.children.each do |child| %>
+                            <li class='category__child--name'>
+                              <%= link_to child.name, category_path(child.id) %>
+                            </li>
+                          <% end %>
+                        </ul>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          </ul>
+
+          <div class='search__engine'>
+            <%= form_with(url: search_contents_path, local: true, method: :get, class: "search__form") do |form| %>
+            <%= form.text_field :keyword, placeholder: "投稿コンテンツを検索", class: "search__input" %>
+            <%= form.submit "[ 検索 ]", class: "search__btn" %>
+            <% end %>
+          </div>
+
+          <div class='new__content--link'>
+            <% if can? :create, current_user %>
+            <li><%= link_to '[ New content! ]', new_content_path, class: "user__name" %></li>
+            <% end %>
+          </div>
+        </div>
+
+
+        <div class='contents'>
+          <h2 class='title'>[ コンテンツ一覧 ]</h2>
+
+          <ul class='content__lists'>
+
+            <% @contents.each do |content| %>
+              <li class='list'>
+                <%= link_to content_path(content.id) do %>
+                <div class='content__img'>
+                  <% if content.video_content.present? %>
+                    <%= video_tag(content.video_content.url, :controls => true, width: "300px")  %>
+                  <% else %>
+                    <div class="image__content" >
+                    <%= image_tag content.image_content.url, width: '300px' %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class='content__info'>
+                  <p class='content__title'>
+                    [ <%= content.title %> ]
+                  </p>
+                  <p class='content__overview'>
+                    <%=safe_join(content.overview.split("\n"),tag(:br))%>
+                  </p>
+                  <p class='content__user--name'>
+                    <%= link_to "投稿者：#{content.user.name}", user_path(content.user.id) %><br />
+                  </p>
+                  <p class='content__user--occupation'>
+                    <%= link_to "所属 ：#{content.user.occupation}", user_path(content.user.id) %><br />
+                  </p>
+                  <%= render partial: 'contents/contents', locals: { content: content } %>
+                </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <%# bottom footer %>
+    <div class="box fr__bottom">
+      <%= render 'shared/footer' %>
+    </div>
 </div>
-<% if can? :update, current_user %>
-  <h1>You can update becouse you're a contributor</h1>
-<% end %>
-<% if can? :read, current_user %>
-  <h1>You can read this as a student or a contributor</h1>
-<% end %>

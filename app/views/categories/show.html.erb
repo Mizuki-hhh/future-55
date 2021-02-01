@@ -1,46 +1,86 @@
-<%= link_to "トップページ", root_path %>
-
-<h1>Show page</h1>
-
-<div class="contents-container">
-  <div class="contents-index">
-    <div class="title">
-      <%= @category.name %>
-      <div class="title__border"></div>
+<%# form here, separate window!!! %>
+<div class='frame'>
+    <%# top header %>
+    <div class="box fr__top" id='fr__top'>
+      <%= render 'shared/header' %>
     </div>
-    <% unless @contents.blank? %>
-      <ul class="lists">
-        <% @contents.each do |content| %>
-          <li class='list'>
-            <%= link_to content_path(content.id) do %>
-            <div class='content__img'>
-              <% if content.video_content.present? %>
-                <%= video_tag(content.video_content.url, :controls => true, width: "370px")  %>
-              <% else %>
-                <div class="image__content" >
-                <%= image_tag content.image_content.url, width: '370px' %>
-                </div>
-              <% end %>
+
+    <%# middle contents %>
+    <div class='middle'>
+      <%# side menu bar %>
+      <div class="box fr__left">
+        <div class="cp__navi">
+          <div id="cp__sidenav" class="sidenav">
+            <%= link_to 'HOME', root_path, class:'a__nav', id:'home' %>
+            <%= link_to 'ABOUT', "#", class:'a__nav', id:'news' %>
+            <%= link_to '学生の方々', "#", class:'a__nav', id:'contact' %>
+            <%= link_to '大人の方々', "#", class:'a__nav', id:'about' %>
+          </div>
+        </div>
+      </div>
+
+      <%# contents & sub header %>
+      <div class="box fr__right">
+
+        <div class='line__space'>
+        </div>
+
+        <div class="categories__main">
+          <div class="categories__submain">
+            <h2 class='just__category'>[ カテゴリー ]</h2>
+            <div class="categories__title">
+              <h2 class='ancestry__name'>
+                <%= @category.parent.name %> >>
+                <%= @category.name %>
+              </h2>
+              <div class="border__space"></div>
             </div>
-            <div class='content__info'>
-              <h3 class='content__title'>
-                <%= content.title %>
-              </h3>
-              <p class='content__overview'>
-                <%=safe_join(content.overview.split("\n"),tag(:br))%>
-              </p>
-            </div>
+            <% unless @contents.blank? %>
+              <ul class='categories__ul'>
+                <% @contents.each do |content| %>
+                  <li class='categories__contents--list'>
+                    <%= link_to content_path(content.id) do %>
+                    <div class='image__video--categories'>
+                      <% if content.video_content.present? %>
+                        <div class='video__content'>
+                        <%= video_tag(content.video_content.url, :controls => true, width: "300px")  %>
+                        </div>
+                      <% else %>
+                        <div class="image__content" >
+                        <%= image_tag content.image_content.url, width: '300px' %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class='content__info'>
+                      <h3 class='content__title'>
+                        <%= content.title %>
+                      </h3>
+                      <p class='content__overview'>
+                        <%=safe_join(content.overview.split("\n"),tag(:br))%>
+                      </p>
+                    <% end %>
+                      <%= link_to "投稿者：#{content.user.name}", user_path(content.user.id) %><br />
+                      <%= link_to "所属：#{content.user.occupation}", user_path(content.user.id) %><br />
+                      <%= render partial: 'contents/contents', locals: { content: content } %>
+                    </div>
+                  </li>
+                <% end %>
+                <%# <%= render "contents/content", contents: @contents %> 
+              </ul>
+            <% else %>
+              <h1 class='no__content'>コンテンツはありません！</h1>
             <% end %>
-            <%= link_to content.user.name, user_path(content.user.id) %><br />
-            <%= link_to content.user.occupation, user_path(content.user.id) %><br />
-            <%= render partial: 'contents/contents', locals: { content: content } %>
-          </li>
-        <% end %>
-        <%# <%= render "contents/content", contents: @contents %> 
-      </ul>
-    <% else %>
-      <h1>コンテンツはありません！</h1>
-    <% end %>
-    <%# <%= paginate @contents %>
-  </div>
+            <%# <%= paginate @contents %>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <%# bottom footer %>
+    <div class="box fr__bottom">
+      <%= render 'shared/footer' %>
+    </div>
 </div>

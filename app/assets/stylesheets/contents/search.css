@@ -1,0 +1,20 @@
+ul.search__ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 30px;
+}
+.search__contents--list {
+  /* width: 45%; */
+  list-style: none;
+  /* display: flex; */
+  margin: 10px 10px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 1vw;
+}
+.search__engine {
+  text-align: center;
+  margin: 30px;
+}
