@@ -1,5 +1,5 @@
 .fillin__contents--form {
-  background-image: url('../milky_way.jpg');
+  background-image: image-url('milky_way.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -142,7 +142,7 @@
 
 /* edit page */
 .edit__contents--form {
-  background-image: url('../ocean.jpg');
+  background-image: image-url('ocean.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top center;
