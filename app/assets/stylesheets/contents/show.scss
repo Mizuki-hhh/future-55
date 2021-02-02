@@ -150,6 +150,8 @@
 .detail__detail--msg {
   text-align: left;
   padding: 8px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 .detail__message {
   width: 20vw;
