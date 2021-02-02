@@ -8,13 +8,13 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.cp__navi {
+.navi {
 	position: relative;
 	overflow: hidden;
 	width: 110px;
 	height:360px;
 }
-.cp__navi #cp__sidenav .a__nav {
+.navi #sidenav .a__nav {
 	font-size: 20px;
 	position: absolute;
 	left: -90px;
@@ -27,25 +27,25 @@
 	border-radius: 0 5px 5px 0;
 }
 // .cp_navi #cp_sidenav a:hover {
-.cp__navi #cp__sidenav .a__nav:hover {
+.navi #sidenav .a__nav:hover {
 	left: -10px;
 }
-.cp__navi #home {
+.navi #home {
 	top: 20px;
   background-color: #c6ecec;
   background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
 }
-.cp__navi #news {
+.navi #about {
 	top: 80px;
   background-color: #a9dfe0;
   background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
-.cp__navi #contact {
+.navi #student {
 	top: 140px;
   background-color: #66cece;
   background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
 }
-.cp__navi #about {
+.navi #contributor {
 	top: 200px;
   background-color: #1eb7be;
   background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
@@ -69,7 +69,7 @@
 	width: 100vw;
 	height: 80vh;
   // background-image: url('logo_copy.png');
-  background-image: url('../future_banner3.png');
+  background-image: image-url('future_banner3.png');
 	height: auto;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -228,9 +228,11 @@
 }
 
 .content__title {
+  width: 300px;
   text-decoration: none;
   margin: 5px auto;
   text-align: left;
+  font-weight: bold;
   background-image: linear-gradient(to right, #ACB6E5, #86FDE8);
   background-repeat: no-repeat;
   background-size: 100% 30%;
