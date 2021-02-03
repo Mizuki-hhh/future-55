@@ -126,6 +126,7 @@
   display: flex;
   justify-content: space-around;
   padding-top: 40px;
+  padding-bottom: 60px;
 }
 
 
@@ -161,6 +162,10 @@
   // text-align: center;
   // padding-top: 20px;
 // }
+.search__engine {
+  // align-self: flex-end;
+  padding-top: 170px;
+}
 
 .search__form .search__input {
   width: 300px;
@@ -178,6 +183,16 @@
 }
 .search__form .search__btn:hover {
   text-shadow: 0 0 5px rgba(20, 183, 185, 0.5);
+}
+
+// 名言
+.famous_quote {
+  font-family: fantasy;
+  text-align: right;
+  margin-bottom: 50px;
+  margin-right: 40px;
+  color: #14b7b9;
+  text-shadow: 0 0 5px rgba(252, 230, 251, 0.9);
 }
 
 
@@ -202,6 +217,7 @@
   padding: 5vh 5vh;
   overflow-anchor: none;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 // .list {
   // width: 33vh;
