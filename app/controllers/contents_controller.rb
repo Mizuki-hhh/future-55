@@ -72,7 +72,7 @@ class ContentsController < ApplicationController
   end
 
   def search
-    @contents = Content.search(params[:keyword])
+    @contents = Content.search(params[:keyword]).order("created_at DESC")
   end
   
 
