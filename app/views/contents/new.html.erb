@@ -17,7 +17,6 @@
             <span class='indispensable'>必須</span>
           </div>
           <div class="field">
-            <%# <%= f.label :title, "タイトル" %>
             <%= f.text_field :title, size: '35x5', class:'content__text', id:'content__name', placeholder:"タイトルを入力してください" %>
           </div>
         </div>
@@ -36,7 +35,6 @@
                 クリックしてファイルをアップロード
               </p>
               <div class="field">
-                <%# <%= f.label :image, "画像" %>
                 <%= f.file_field :image_content, :accept => 'image/jpeg,image/gif,image/png'%>
               </div>
             </div>
@@ -50,7 +48,6 @@
                 クリックしてファイルをアップロード
               </p>
               <div class="field">
-                <%# <%= f.label :video, "動画" %>
                 <%= f.file_field :video_content, :accept => 'video/*' %>
               </div>
             </div>
@@ -63,7 +60,6 @@
             <span class='indispensable'>必須</span>
           </div>
           <div class="field">
-          <%# <%= f.label :overview %>
             <%= f.text_area :overview, size: '80x10', class:'content__text', id:'content__overview', placeholder:'概要とキーワードを入力してください。キーワードを記入すると、検索しやすくなります。' %>
           </div>
         </div>
@@ -74,7 +70,6 @@
             <span class='indispensable'>必須</span>
           </div>
           <div class="field">
-            <%# <%= f.label :writing %>
             <%= f.text_area :writing, size: '80x20', class:'content__text', id:'content__writing', placeholder:'コンテンツの詳細を記入してください。' %>
           </div>
         </div>
@@ -86,7 +81,6 @@
             <p>(特にない場合は、投稿者に関連するURLを記入してください)</p>
           </div>
           <div class="field">
-              <%# <%= f.label :source %>
             <%= f.text_field :source, size: '50x5' , class:'content__text', id:'content__url', placeholder:'例) https://example.com' %>
           </div>
         </div>
@@ -100,7 +94,6 @@
           <div class="field">
             <div class='listing-form-box'> 
               <div class='listing-content-detail__category'>
-                <%# <%= f.label :category, class: 'listing-default__label' %>
                 <div class='listing-select-wrapper'>
                   <div class="listing-select-wrapper__box">
                     <%= f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} %>

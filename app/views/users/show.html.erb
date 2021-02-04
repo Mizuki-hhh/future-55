@@ -33,10 +33,6 @@
               </h2>
               <table class="table">
                 <tbody>
-                  <%# <tr>
-                    <th class="table__col1">お名前</th>
-                    <td class="table__col2"><%= @user.name %>
-                  <%# </tr> %>
                   <tr>
                     <% if @user.contributor? %>
                     <th class="table__col1">所属</th>
@@ -92,7 +88,6 @@
                 <% end %>
 
                 <% if current_user.nil? && @user.student? %>
-                <%# <% if current_user.nil? && @user.student? %>
                   <h2 class='no__look--display'>
                   <p>ログインしていないユーザーの方へ<br />学生のマイページは表示できません。</p>
                   <p>Without haste, but without rest.</p>
@@ -130,7 +125,6 @@
                                 <%= link_to "投稿者：#{content.user.name} さん", user_path(content.user.id) %><br />
                                 <%= link_to "所属：#{content.user.occupation}", user_path(content.user.id) %><br /> 
                               </div>
-                              <%# <%= render partial: 'contents/contents', locals: { content: content } %>
                             </li>
                           <% end %>
                         </ul>
@@ -143,7 +137,6 @@
                   <p>学生のマイページは表示できません。</p>
                   </h2>
                 <% end %>
-                <%# </ul> %>
               </div>
             </div>
           </div>
