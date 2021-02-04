@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   before_action :category_parent_array, only: [:new, :create, :edit, :update]
   before_action :set_content, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :search]
-  # load_and_authorize_resource
+
 
   def index
     @contents = Content.includes(:user).order("created_at DESC")
@@ -27,7 +27,6 @@ class ContentsController < ApplicationController
     else
       flash[:alert] = 'すべて記入して下さい（画像か動画はどちらかまたは両方を添付して下さい）'
       render :new
-      # redirect_to controller: :contents, action: :new
     end
   end
 
