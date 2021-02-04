@@ -8,9 +8,8 @@ ja:
         overview: 概要
         writing: 詳細
         source: URL
-        category: カテゴリー
-      category: 
-        category: カテゴリー
+        category: 2つ目のカテゴリー
+        category_id: カテゴリー
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

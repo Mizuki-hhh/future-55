@@ -15,9 +15,10 @@ https://future-55.herokuapp.com/
 
 #### Basic認証
 ID : future
+
 PASSWORD : 2525
 
-#### テスト用アカウント（ログイン機能などを実装した場合記述。Basic認証も記述）
+#### テスト用アカウント
 ＜仕事をされている方（コンテンツが投稿できる方）＞
 * 投稿者 1
   - メールアドレス：contributor1@gmail.com
