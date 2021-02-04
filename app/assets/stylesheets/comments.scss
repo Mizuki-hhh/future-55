@@ -6,7 +6,6 @@
 
 // コメント
 .content__comments{
-  // width: 80%;
   background-color: #f6f6f6;
   padding: 20px;
   margin: 28px 0 40px 0;
@@ -23,11 +22,9 @@
   padding-left: 20px;
 }
 .comments__list{
-  // padding-left: px;
   list-style-type: square;
   padding-bottom: 5px;
   list-style: none;
-  // padding-left: 20px;
 }
 .comment__list {
   width: 100%;
@@ -39,11 +36,9 @@
   color: #999;
   text-decoration: none;
 }
-
 .comment__bottom {
   width: 100%;
   display: flex;
-  // justify-content: space-between;
   margin-bottom: 5px;
   color: dimgray;
 }

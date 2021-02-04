@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* .user_card { */
-  /* display: flex; */
-/* } */
 ul.show__ul {
   list-style: none;
   display: flex;
@@ -13,19 +10,11 @@ ul.show__ul {
   margin-left: 30px;
 }
 .show__contents--list {
-  // width: 45%;
   list-style: none;
-  // display: flex;
   margin: 10px 10px;
   justify-content: space-around;
   padding: 1vw;
 }
-
-// .file__text--contents {
-  // display: flex; 
-  // width: 40vw;
-  // margin-left: 1vw;
-// }
 .page__heading {
   color: #14b7b9;
   font-size: 22px;

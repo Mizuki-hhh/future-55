@@ -6,9 +6,7 @@ ul.search__ul {
   margin-left: 30px;
 }
 .search__contents--list {
-  /* width: 45%; */
   list-style: none;
-  /* display: flex; */
   margin: 10px 10px;
   justify-content: space-around;
   flex-wrap: wrap;

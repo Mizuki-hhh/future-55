@@ -1,25 +1,12 @@
 .fillin__contents--form {
-  /* background-image: url('milky_way.jpg'); */
-  /* background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center; */
   display: flex;
   align-items: center;
   flex-direction: column;
   color: rgb(63, 61, 61);
   background: linear-gradient(to top, rgba(245, 169, 241, 0.7) 0%, rgba(112, 243, 243, 0.4) 100%);
 }
-/* .fillin__contents--main { */
-  /* width: 70vw; */
-  /* min-width: 350px;
-  padding: 5vh 5vw;
-  margin: 5vw auto; */
-  /* text-align: center; */
-/* } */
 .white__bg {
   background-color: white;
-  /* width: 70vw auto; */
-  /* min-width: 450px; */
   margin: 2vw 5vw;
   padding: 5vh;
   text-align: center;
@@ -29,9 +16,6 @@
   font-weight: bold;
   text-align: center;
 }
-
-
-
 
 .indispensable {
   background-color: #ea352e;
@@ -55,9 +39,6 @@
   margin-top: 3px;
 }
 .image__video--upload {
-  /* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap; */
   padding: 2vh 0;
 }
 .either__ok {
@@ -73,15 +54,10 @@
   margin-bottom: 5px;
 }
 
-
-
-
-
 .fillin__contents {
   padding: 2vh 0;
 }
 .content__text {
-  /* width: auto; */
   padding: 8px 8px 6px;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -90,15 +66,12 @@
 .listing-select-wrapper__box--select {
   padding: 6px 6px 4px;
   border-radius: 4px;
-  /* border: 1px solid #ccc; */
   font-size: 14px;
   color: rgb(63, 61, 61);
 }
 
 
-
 .fillin__contents--btn {
-  /* width: 100vw; */
   text-align: center;
   flex-direction: column;
   display: block;
@@ -116,7 +89,6 @@
   cursor: pointer;
   font-weight: bold;
 }
-
 .fillin__contents--footer {
   text-align: center;
   color: #fff;
@@ -142,10 +114,6 @@
 
 /* edit page */
 .edit__contents--form {
-  /* background-image: url('ocean.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top center; */
   display: flex;
   align-items: center;
   flex-direction: column;

@@ -30,12 +30,8 @@
             <div class="detail__content">
               <div class='detail__heading--flex'>
                 <p class= "detail__heading">[ <%= @content.title %> ]</p>
-                <%# <div class="content__date"> %>
                   <p class='content__date'><%= @content.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-                <%# </div> %>
-                <%# <div class='detail__contributor'> %>
                   <p class='detail__contributor'><%= link_to "投稿者：#{@content.user.name} さん", user_path(@content.user), class: :content__user %></p>
-                <%# </div> %>
 
                 <%if user_signed_in? && current_user.id == @content.user_id %>
                   <div class="content__manage">
@@ -113,7 +109,6 @@
                           <div class='comment__main--text'>
                             [ コメント ]
                           </div>
-                            <%# <%= f.label :text, "コメント" %>
                             <%= f.text_area :text ,size: '45x3' %>
                         </div>
                         <div class="actions">
