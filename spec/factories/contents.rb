@@ -7,6 +7,13 @@ FactoryBot.define do
      writing { Faker::Lorem.paragraphs }
      source { Faker::Internet.url }
      association :user
-    association :category
+     association :category
+
+    after(:build) do |content|
+      parent_category = create(:category)
+      child_category = parent_category.children.create(name: "その他")
+
+      content.category_id = child_category.id
+    end
   end
 end
