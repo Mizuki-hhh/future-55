@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-def basic_pass(path)
-  username = ENV["FUTURE_AUTH_USER"]
-  password = ENV["FUTURE_AUTH_PASSWORD"]
-  visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
-end
+# def basic_pass(path)
+#   username = ENV["FUTURE_AUTH_USER"]
+#   password = ENV["FUTURE_AUTH_PASSWORD"]
+#   visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
+# end
 
 RSpec.describe "ユーザー新規登録", type: :system do
   before do
@@ -14,8 +14,9 @@ RSpec.describe "ユーザー新規登録", type: :system do
   context 'ユーザー新規登録ができるとき' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
       # Basic認証を経てトップページに遷移する
-      basic_pass root_path
+      # basic_pass root_path
       # トップページにサインアップページに遷移するボタンがあることを確認する
+      visit root_path
       expect(page).to have_content('新規登録')
       # 新規登録ページへ移動する
       visit new_user_registration_path
@@ -79,8 +80,9 @@ RSpec.describe "ユーザーログイン機能", type: :system do
   context 'ログインができるとき' do
     it '保持されているユーザーの情報と合致すればログインができる' do
       # Basic認証を経てトップページに移動する
-      basic_pass root_path
+      # basic_pass root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
+      visit root_path
       expect(page).to have_content('ログイン')
       # ログインページに移動する
       visit new_user_session_path
