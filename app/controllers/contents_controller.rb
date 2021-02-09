@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :basic_auth
+  # before_action :basic_auth
   before_action :set_category, except: [:show]
   before_action :category_parent_array, only: [:new, :create, :edit, :update]
   before_action :set_content, only: [:show, :edit, :update, :destroy]
@@ -78,11 +78,11 @@ class ContentsController < ApplicationController
 
   private
 
-  def basic_auth
-    authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["FUTURE_AUTH_USER"] && password == ENV["FUTURE_AUTH_PASSWORD"]
-    end
-  end
+  # def basic_auth
+  #   authenticate_or_request_with_http_basic do |username, password|
+  #     username == ENV["FUTURE_AUTH_USER"] && password == ENV["FUTURE_AUTH_PASSWORD"]
+  #   end
+  # end
 
   def content_params
     params.require(:content).permit(:title, :image_content, :video_content, :overview, :writing, :source, :category_id).merge(user_id: current_user.id)
